@@ -44,3 +44,48 @@
 .logo {
     max-width: 100%;
 }
+
+
+.white_backgroud {
+    background-color: white;
+}
+
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 500px;
+    width: 400px;
+    font-size: 25px;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.box form {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.box a {
+    color:#A60F2D
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+.fill {
+    height: 100%;
+}
+
+

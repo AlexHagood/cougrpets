@@ -8,3 +8,5 @@ lentil game+ inventory main+ shop  -- alex
 tictactoe game + profile page + game selection -- sierra
 
 at some point there will be an mspaint cougar for the icon, i will use smthing off the internet for now
+
+all the basic colors and such are in the style.css file
