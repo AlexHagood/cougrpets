@@ -1,0 +1,40 @@
+.wsu_crimson {
+    color: #A60F2D
+}
+
+.wsu_grey {
+    color: #4D4D4D
+}
+
+.crimson_background {
+    background-color: #A60F2D;
+}
+
+.sidebar {
+    height: 100%;
+    width: 300px;
+    position:fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #A60F2D;
+    overflow-x: hidden;
+    padding-top: 20px;
+
+}
+
+.sidebar a{
+    
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    max-width: 100%;
+}
