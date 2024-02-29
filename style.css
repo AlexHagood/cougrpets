@@ -20,7 +20,13 @@
     background-color: #A60F2D;
     overflow-x: hidden;
     padding-top: 20px;
+    color: white;
+    font-size: 25px;
+    font-family: 'Comic Sans MS', cursive;
+}
 
+.sidebar progress {
+    accent-color: #4D4D4D;
 }
 
 .sidebar a{
