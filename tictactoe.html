@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>cougrpets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .content{
+            padding-left: 225px;
+        }
+
+        .bg-color{
+            background-color: #fad1d9;
+        }
+        .gameboard {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            /*background-color: white;*/
+            grid-auto-rows: 200px;
+            /*grid-template-columns: 0.25fr 0.25fr 0.25fr;*/
+            grid-template-columns: 200px 200px 200px;
+            justify-content: center;
+            padding-bottom: 50px;
+        }
+        .cell{
+            background-color: white;
+            color:black;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="bg-color">
+    <div class="container display-flex">
+        <div class="sidebar">
+            <a href="inventory.html"><img class="logo" src="images/logo.png"></a>
+
+            <div style="padding: 6px 8px 6px 16px">
+                <img class="logo" src="images/butch.jpg">
+                <label for="food">Food</label>
+                <progress id="food" value="56" max="100">56%</progress>
+                <label for="happiness">Happiness</label>
+                <progress id="happiness" value="32" max="100">32%</progress>
+                <p><a href="inventory.html">Inventory</a></p>
+                <p><a href="shop.html">Shop</a></p>
+                <p><a href="gameselect.html">Games</a></p>
+            </div>
+        </div>
+        <div class="content">
+            <!--this is where all your content goes!-->
+            <h1>Welcome to Tic-Tac-Toe!</h1>
+            <p>Please choose your symbol: X or O</p>
+            <p>Rules:</p>
+            <p>You get to go first; choose a box to put your symbol in</p>
+            <p>You and the computer will take turns placing symbols in the grid</p>
+            <p>The first to get 3 of their symbol in a row, column, or diagonal wins</p>
+            <div class="gameboard">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
