@@ -88,4 +88,40 @@ html, body {
     height: 100%;
 }
 
+.content{
+    padding-left: 100px;
+    font-family: 'Comic Sans MS', cursive;
+}
 
+.content a{
+    /*Crimson or silver?*/
+    color: #A60F2D;
+    /*color: #595959;*/
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.bg-color{
+background-color: #fad1d9;
+}
+
+.description{
+    color: #4D4D4D;
+}
+
+.gameboard {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /*background-color: white;*/
+    grid-auto-rows: 200px;
+    /*grid-template-columns: 0.25fr 0.25fr 0.25fr;*/
+    grid-template-columns: 200px 200px 200px;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+.cell{
+    background-color: white;
+    color:black;
+    border: 1px solid black;
+    text-align: center;
+}
