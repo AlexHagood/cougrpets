@@ -21,9 +21,11 @@
     overflow-x: hidden;
     padding-top: 20px;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Comic Sans MS', cursive;
 }
+
+
 
 .sidebar progress {
     accent-color: #4D4D4D;
@@ -33,7 +35,7 @@
     
     text-decoration: none;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Comic Sans MS', cursive;
 }
 
