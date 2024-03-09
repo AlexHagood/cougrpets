@@ -145,3 +145,62 @@ background-color: #fad1d9;
     border: 1px solid black;
     text-align: center;
 }
+
+
+/*inventory/shop CSS start*/
+.Item{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    background-color: red;
+    flex-direction: column;
+    width: 150px;
+    border: 5px black solid;
+    padding: 10px
+}
+
+.itemTitle{
+    font-weight: bold;
+    font-size: large;
+    display: inline;
+}
+
+.itemIcon{
+    padding: 2px;
+    border: 1px black solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.itemIcon{
+    width: 66%;    
+}
+
+.inventory-grid {
+    margin-top: 20px;
+    padding: 20px;
+    border: 4px dashed black;
+    background-color: #4D4D4D;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+
+/*inventory CSS end*/
+
+#shop-grid {
+    margin-top: 20px;
+    padding: 20px;
+    border: 4px dashed black;
+    background-image: url(images/woodtile.jpg);
+    background-repeat: repeat;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
