@@ -25,16 +25,21 @@ app.use((req, res, next) => {
     // Combine sidebar and content
     let finalHTML = "hmm"
 
+    app.get('/', (req, res) => {
+        res.redirect('/inventory');
+    });
+    
+
 
     // if the first line of a page is <!NOSIDEBAR>, then our server won't add the sidebar code. Useful for the registration and login pages.
     if (pageContent.trim().split('\n')[0].trim() == "<!NOSIDEBAR>")
     {
         console.log("No siderbar page loaded.")
-        finalHTML = `${pageContent};`
+        finalHTML = `${pageContent}`
     }
     else
     {
-        finalHTML = `${sidebarContent}${pageContent};`
+        finalHTML = `${sidebarContent}${pageContent}`
     };
   
     // Send the combined HTML as the response
