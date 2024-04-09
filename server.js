@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 path = require('path');
+const User = require('./Users')
+const Profile = require('./Profile')
+const sequelize = require('./db');
 
 
 const templatePath = path.join(__dirname, 'nodetemplate.html');
@@ -57,3 +60,14 @@ app.use('/favicon.ico', (req, res) => {
 app.listen(3000, () => {
     console.log(`Server is running at port 3000`);
 });
+
+
+async function setup(){
+    const user1 = await User.create({username: "Sierra", password:"voiland"});
+    const profile1 = await Profile.create({username: "Sierra", petname:"Ridley"});
+}
+
+sequelize.sync({force: true}).then(() =>{
+    console.log("Sync completed");
+    setup().then(() => console.log("New user setup complete"))
+  })
