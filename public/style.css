@@ -1,0 +1,206 @@
+.wsu_crimson {
+    color: #A60F2D
+}
+
+.wsu_grey {
+    color: #4D4D4D
+}
+
+.crimson_background {
+    background-color: #A60F2D;
+}
+
+.sidebar {
+    height: 100%;
+    width: 300px;
+    position:fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #A60F2D;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: white;
+    font-size: 20px;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+
+
+.sidebar progress {
+    accent-color: #4D4D4D;
+}
+
+.sidebar a{
+    
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    max-width: 100%;
+}
+
+
+.white_backgroud {
+    background-color: white;
+}
+
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 500px;
+    width: 400px;
+    font-size: 25px;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.box form {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.box a {
+    color:#A60F2D
+}
+
+
+.lentil-container {
+    gap: 50px;
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+} 
+
+.lentil-grid{
+    display: grid;
+    grid-template-rows: repeat(6, 100px);
+    grid-template-columns: repeat(10, 100px);
+}  
+
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+.fill {
+    height: 100%;
+}
+
+.content{
+    padding-left: 225px;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.content a{
+    /*Crimson or silver?*/
+    color: #A60F2D;
+    /*color: #595959;*/
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.bg-color{
+background-color: #fad1d9;
+}
+
+.description{
+    color: #4D4D4D;
+}
+
+.gameboard {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /*background-color: white;*/
+    grid-auto-rows: 150px;
+    /*grid-template-columns: 0.25fr 0.25fr 0.25fr;*/
+    grid-template-columns: 150px 150px 150px;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+.cell{
+    background-color: white;
+    color:black;
+    border: 1px solid black;
+    text-align: center;
+}
+
+
+/*inventory/shop CSS start*/
+.Item{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    background-color: red;
+    flex-direction: column;
+    width: 150px;
+    border: 5px black solid;
+    padding: 10px
+}
+
+.itemTitle{
+    font-weight: bold;
+    font-size: large;
+    display: inline;
+}
+
+.itemIcon{
+    padding: 2px;
+    border: 1px black solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.itemIcon{
+    width: 66%;    
+}
+
+.inventory-grid {
+    margin-top: 20px;
+    padding: 20px;
+    border: 4px dashed black;
+    background-color: #4D4D4D;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+
+/*inventory CSS end*/
+
+#shop-grid {
+    margin-top: 20px;
+    padding: 20px;
+    border: 4px dashed black;
+    background-image: url(images/woodtile.jpg);
+    background-repeat: repeat;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}

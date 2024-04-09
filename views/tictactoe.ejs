@@ -1,0 +1,59 @@
+<!--this is where all your content goes!-->
+<!DOCTYPE html>
+<html lang="en">
+
+    <header>
+        <link rel="stylesheet" href="style.css"/>
+        <script src="js/tictactoe.js"></script>
+
+        <style>
+            /* Initially hide the image */
+            #redX {
+                display: none;
+            }
+
+            .cell p{
+                font-size: 48px;
+            }
+        </style>
+    </header>
+
+    <div class="bg-color content">
+        <h1>Welcome to Tic-Tac-Toe!</h1>
+        <p>Rules:</p>
+        <p>You get to go first; choose a box to put your symbol in</p>
+        <p>You and the computer will take turns placing symbols in the grid</p>
+        <p>The first to get 3 of their symbol in a row, column, or diagonal wins</p>
+        <div class="gameboard">
+            <div class="cell" id="cell1" onclick="cell1Click(); round();">
+                <p></p>
+            </div>
+            <div class="cell" id="cell2" onclick="cell2Click(); round();">
+                <p></p>
+            </div>
+            <div class="cell" id="cell3" onclick="cell3Click(); round();">
+                <p></p>
+            </div>
+            <div class="cell" id="cell4" onclick="cell4Click(); round();">
+                <p></p>
+            </div>
+            <div class="cell" id="cell5" onclick="cell5Click(); round();">
+                <p></p>
+            </div>
+            <div class="cell" id="cell6" onclick="cell6Click(); round();">
+                <p></p>
+            </div>
+            <div class="cell" id="cell7" onclick="cell7Click(); round();">
+                <p></p>
+            </div>
+            <div class="cell" id="cell8" onclick="cell8Click(); round();">
+                <p></p>
+            </div>
+            <div class="cell" id="cell9" onclick="cell9Click(); round();">
+                <p></p>
+            </div>
+        </div>
+        <p id="outcome"></p>
+        <button id="reset" disabled onclick="reset()">Reset</button>
+    </div>
+</html>
