@@ -3,10 +3,16 @@ const app = express();
 const fs = require("fs");
 path = require("path");
 const User = require("./models/Users");
-const Profile = require("./Profile");
+const Profile = require("./models/Profile.js");
 const sequelize = require("./db");
 
+const authenticationRouter = require("./routes/authenticate.js")
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static("./public"));
+
+app.use(authenticationRouter)
 
 //load the sidebar straihgt into memory, since nearly every page will use it.
 
