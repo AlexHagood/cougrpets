@@ -2,18 +2,18 @@ async function getPetName(username)
 {
 
 }
-async function getPetHunger(username)
+async function getPetFullness(username)
 {
 
 }
 
-async function addPetHunger(username, hungerValue)
+async function addPetFullness(username, hungerValue)
 {
+    return
 
 }
-async function removePetHunger(username)
+async function removePetFullness(username)
 {
-
 }
 
 async function getPetHappiness(username)
@@ -30,3 +30,6 @@ async function removePetHappiness(username)
 
 }
 
+module.exports = {
+    addPetFullness
+}

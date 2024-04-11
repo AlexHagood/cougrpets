@@ -20,7 +20,6 @@ async function purchase(req, res){
     } else { // insufficient funds
         res.send("Get out of my shop brokie!")
     }
-
 })}
 
 module.exports = 

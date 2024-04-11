@@ -1,18 +1,39 @@
 <h1 class="center"> Your Inventory </h1>
 <div class="inventory-grid">
-    <div class="Item">
-        <div class="itemTitle">
-            Chicken
+    <% for (let i = 0; i < inventory.length; i++) { item = inventory[i]; %>
+        <div class="Item", id="<%=i%>">
+            <div class="itemTitle">
+                <%= item.name %>
+            </div>
+            <%= item.price %>
+            <img class="itemIcon" src= <%= item.path %> >
+                <select>
+                    <option value="0">Eat</option>
+                    <option value="1">Throw Away</option>
+                </select>
+                <button type="button" onclick="eatItem(<%=item.id%>, <%=i%>)">></button>
+            </form>
         </div>
-        <img class="itemIcon" src="images/chicken.png">
-        <div class="itemMenu">
-            <select>
-                <option value="0">Eat</option>
-                <option value="1">Sell</option>
-                <option value="2">Discard</option>
-
-            </select>
-            <button>></button>
-        </div>
-    </div>
+    <%}%>
 </div>
+
+<script>
+    function eatItem(itemID, divID)
+    {
+        fetch('/inventory', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({itemID : itemID})
+        })
+        .then(Response => {
+            return Response.text();
+        })
+        .then(data=> {
+            console.log(data);
+            document.getElementById(divID).remove();
+        })
+        .catch(error => {
+            console.err(err);
+        })
+    }
+</script>

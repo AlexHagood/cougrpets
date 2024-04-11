@@ -6,25 +6,30 @@ const User = require("./models/Users");
 const Profile = require("./models/Profile.js");
 const sequelize = require("./db");
 
-const authenticationRouter = require("./routes/authenticate.js")
-const shopRoutes = require("./routes/shopRoutes.js");
 
 
+// Middleware!
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("./public"));
-
-app.use(authenticationRouter);
-
-app.use("/shop", shopRoutes);
-
-//load the sidebar straihgt into memory, since nearly every page will use it.
-
 app.set("view engine", "ejs");
 
+
+
+// Our routers!!
+const authenticationRouter = require("./routes/authenticate.js")
+const shopRoutes = require("./routes/shopRoutes.js");
+const inventoryRoutes = require("./routes/inventoryRoutes.js")
+
+app.use("/inventory", inventoryRoutes);
+app.use(authenticationRouter);
+app.use("/shop", shopRoutes);
+
+
+// The default router!!
 app.use((req, res, next) => {
   // Combine sidebar and content
-
+  console.log("In default")
   app.get("/", (req, res) => {
     res.redirect("/inventory");
   });
@@ -41,6 +46,9 @@ app.use("/favicon.ico", (req, res) => {
 app.listen(3000, () => {
   console.log(`Server is running at port 3000`);
 });
+
+
+// DB Initialization!
 
 // async function setup(){
 //     const user1 = await User.create({username: "Sierra", password:"voiland"});
