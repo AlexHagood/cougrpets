@@ -1,9 +1,52 @@
-<script defer src="js/shopscript.js"></script>
 <div class="center">
     <h1 class> Shop </h1>
     <img src="images/shopkeepbutch.png">
-    <h3>What would you like to buy today?</h3>
-    <button id="restock">test restock!!</button>
+    <h3 id="speech">What would you like to buy today?</h3>
 </div>
 <div id="shop-grid">
+    <% inventory.forEach(item => { %>
+        <div class="Item">
+            <div class="itemTitle">
+                <%= item.name %>
+            </div>
+            <%= item.price %>
+            <img class="itemIcon" src= <%= item.path %> >
+                <select>
+                    <option value="0">Buy</option>
+                    <option value="1">Haggle</option>
+                </select>
+                <button type="button" onclick="buyShopItem(<%= item.id %> )">></button>
+            </form>
+        </div>
+    <%})%>
 </div>
+
+<script>
+    speechbox = document.getElementById("speech")
+    function speak(words)
+    {
+        speechbox.textContent = words
+    }
+    function buyShopItem(id)
+    {
+        fetch('/shop', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            }
+            ,
+            body: JSON.stringify({itemID : id})
+        })
+        .then(Response => {
+            return Response.text();
+        })
+        .then(data => {
+            speak(data)
+        })
+        .catch(error => {
+            speechbox.textContent = "Sorry, you broke my shopping register..."
+            console.log(error)
+        })
+
+        }
+</script>

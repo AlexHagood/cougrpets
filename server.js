@@ -7,12 +7,16 @@ const Profile = require("./models/Profile.js");
 const sequelize = require("./db");
 
 const authenticationRouter = require("./routes/authenticate.js")
+const shopRoutes = require("./routes/shopRoutes.js");
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("./public"));
 
-app.use(authenticationRouter)
+app.use(authenticationRouter);
+
+app.use("/shop", shopRoutes);
 
 //load the sidebar straihgt into memory, since nearly every page will use it.
 
@@ -20,7 +24,6 @@ app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
   // Combine sidebar and content
-  let finalHTML = "hmm";
 
   app.get("/", (req, res) => {
     res.redirect("/inventory");
