@@ -25,14 +25,14 @@ app.use("/inventory", inventoryRoutes);
 app.use(authenticationRouter);
 app.use("/shop", shopRoutes);
 
+app.get("/", (req, res) => {
+	res.redirect("/inventory");
+});
 
 // The default router!!
 app.use((req, res, next) => {
   // Combine sidebar and content
   console.log("In default")
-  app.get("/", (req, res) => {
-    res.redirect("/inventory");
-  });
 
   res.render("base", { content: "." + req.path });
 
