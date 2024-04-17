@@ -28,7 +28,7 @@ async function register(req, res) {
     res.status(500).send("Internal server error");
   }}
 
-async function login() {
+async function login(req, res) {
   try{
     const { username, password} = req.body;
 

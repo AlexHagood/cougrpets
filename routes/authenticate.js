@@ -14,6 +14,13 @@ router.get("/register", (req, res) => {
 });
 
 
+router.get("/logout", (req, res) => {
+    req.session.destroy(() => {
+        res.redirect("/login")
+    })
+});
+
+
 router.post("/login", authController.login)
 
 router.post("/register", authController.register)

@@ -16,6 +16,32 @@ app.use(express.static("./public"));
 app.set("view engine", "ejs");
 
 
+// Sessioning
+app.use(
+  session({
+    secret: 'temp', // TEMPORARY! Change later with a secrets file
+    resave: false,
+    saveUninitialized: true,
+  })
+)
+
+
+//If a user doesn't log in, they must make an account or log in!
+app.use((req, res, next) => {
+  if (req.session.user || req.path === "/login" || req.path === "/register") 
+  {
+    next();
+  }
+  else {
+    res.redirect("/login")
+  }
+});
+
+
+
+
+
+
 
 // Our routers!!
 const authenticationRouter = require("./routes/authenticate.js")
@@ -34,7 +60,6 @@ app.get("/", (req, res) => {
 // The default router!!
 app.use((req, res, next) => {
   // Combine sidebar and content
-  console.log("In default")
 
   res.render("base", { content: "." + req.path }, (error, html) => {
     if (error) {
