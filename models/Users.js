@@ -15,6 +15,19 @@ class User extends Model{
             return null;
         }
     }
+
+    static async checkUsername(username){
+        try{
+            const user = await User.findByPk(username);
+            if(user){
+                return true;
+            }
+            return false;
+        }catch(error){
+            console.log(error);
+            return null;
+        }
+    }
 }
 
 User.init({
