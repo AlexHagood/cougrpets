@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require("express-session")
 const app = express();
 const fs = require("fs");
 path = require("path");
@@ -29,12 +30,20 @@ app.get("/", (req, res) => {
 	res.redirect("/inventory");
 });
 
+
 // The default router!!
 app.use((req, res, next) => {
   // Combine sidebar and content
   console.log("In default")
 
-  res.render("base", { content: "." + req.path });
+  res.render("base", { content: "." + req.path }, (error, html) => {
+    if (error) {
+      console.log("404 Error!")
+      res.status(404).sendFile(__dirname + "/public/404.html")
+    } else {
+      res.send(html)
+    }
+  });
 
 
 });
@@ -42,6 +51,7 @@ app.use((req, res, next) => {
 app.use("/favicon.ico", (req, res) => {
   res.sendFile(path.join(__dirname, "favicon.ico"));
 });
+
 
 app.listen(3000, () => {
   console.log(`Server is running at port 3000`);

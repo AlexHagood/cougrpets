@@ -204,3 +204,17 @@ background-color: #fad1d9;
     justify-content: center;
     gap: 20px;
 }
+
+
+.missingbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10%;
+    background-color: white;
+    border: 5px solid black;
+    height: 200px;
+    width: 400px;
+    font-size: 25px;
+}
