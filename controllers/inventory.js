@@ -1,17 +1,25 @@
 const Item = require('../models/items');
 const Inventory = require('../models/inventory');
 const Pet = require('../models/pet');
+const ejs = require("ejs");
 
 
 
 
-async function getInventory(req, res){
-    Inventory.getInventory()
-    .then(packedInv => {
-        res.render('base', {
-        content : "./inventory", 
-        inventory : Inventory.unpackInventory(packedInv)
-    })})
+async function getInventory(req, res, next){
+    
+
+    packedInv = await Inventory.getInventory()
+    console.log("rendering stuff")
+    
+    res.contentHTML = 
+    ejs.renderFile(__dirname + '/../views/inventory.ejs', { 
+    inventory : Inventory.unpackInventory(packedInv)
+    })
+
+
+    next()
+
 }
 
 

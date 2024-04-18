@@ -1,9 +1,12 @@
 const Item = require('../models/items');
 const Money = require('../models/money')
 const Inventory = require('../models/inventory')
+const ejs = require('ejs')
 
-async function getShop(req, res){
-    res.render('base', {content : "./shop", inventory : Item.ItemList})
+async function getShop(req, res, next)
+{
+    res.contentHTML = ejs.renderFile(__dirname + "/../views/shop.ejs", {inventory : Item.ItemList})
+    next()
 }
 
 async function purchase(req, res){

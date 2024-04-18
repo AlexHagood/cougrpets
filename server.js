@@ -6,6 +6,7 @@ path = require("path");
 const User = require("./models/Users");
 const Profile = require("./models/Profile.js");
 const sequelize = require("./db");
+const ejs = require("ejs")
 
 
 
@@ -27,15 +28,15 @@ app.use(
 
 
 //If a user doesn't log in, they must make an account or log in!
-app.use((req, res, next) => {
-  if (req.session.user || req.path === "/login" || req.path === "/register") 
-  {
-    next();
-  }
-  else {
-    res.redirect("/login")
-  }
-});
+// app.use((req, res, next) => {
+//   if (req.session.user || req.path === "/login" || req.path === "/register") 
+//   {
+//     next();
+//   }
+//   else {
+//     res.redirect("/login")
+//   }
+// });
 
 
 
@@ -60,15 +61,28 @@ app.get("/", (req, res) => {
 // The default router!!
 app.use((req, res, next) => {
   // Combine sidebar and content
+  console.log("in main")
 
-  res.render("base", { content: "." + req.path }, (error, html) => {
-    if (error) {
-      console.log("404 Error!")
-      res.status(404).sendFile(__dirname + "/public/404.html")
-    } else {
-      res.send(html)
-    }
-  });
+  if (!res.contentHTML)
+  {
+    res.contentHTML = ejs.renderFile(__dirname + "/views" + req.path + ".ejs")
+  }
+
+  res.contentHTML.then((content) => 
+  {
+    res.render("base", { content: content }, (error, html) => {
+      if (error) {
+        console.log("404 Error!")
+        console.error(error)
+        res.status(404).sendFile(__dirname + "/public/404.html")
+      } else {
+        res.send(html)
+      }
+    });
+
+  })
+
+  
 
 
 });
