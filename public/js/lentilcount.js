@@ -50,6 +50,7 @@ submitButton.addEventListener("click", () =>
     if (guess == lentilCount)
     {
         alert("You guessed: " + guess + "... Good job!")
+        // access the add pet happiness function here?
 
     }
     else

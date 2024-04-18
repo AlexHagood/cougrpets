@@ -3,36 +3,40 @@ async function getPetName(username)
     return "Butch"
 }
 
+j = 0
 async function getPetFullness(username)
 {
-    return 77
+    removePetFullness()
+    return j
 }
 
 async function addPetFullness(username, hungerValue)
 {
+    j += hungerValue
 
 }
 
 async function removePetFullness(username)
 {
-
+    j -= 1
 }
 
-i = 30
+i = 100
 
 async function getPetHappiness(username)
 {
-    return i+=10;
+    removePetHappiness()
+    return i
 }
 
 async function addPetHappiness(username, hungerValue)
 {
-
+    i += 15
 }
 
 async function removePetHappiness(username)
 {
-
+    i-= 1
 }
 
 module.exports = {

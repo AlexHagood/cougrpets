@@ -9,7 +9,6 @@ async function sideBarData (req, res, next){
     petHappiness = await Pet.getPetHappiness("Tempuser")
     userMoney = await Money.getBalance("Tempuser")
     console.log("rendering sidebar stuff")
-    console.log("money: ", userMoney)
 
     
     res.sideBarStats = { 
