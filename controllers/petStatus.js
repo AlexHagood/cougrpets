@@ -3,14 +3,21 @@ const Pet = require('../models/pet');
 
 
 
-async function getHappiness(req, res) {
-    Pet.getPetHappiness("Tempuser")
+async function sideBarData (req, res, next){
+    petHunger = await Pet.getPetFullness()
+    petHappiness = await Pet.getPetHappiness()
+    console.log("rendering sidebar stuff")
+    console.log("pet happiness: ", petHappiness)
+    
+    res.sideBarStats = { 
+    happiness : petHappiness,
+    hunger : petHunger
+    }
+    
+    console.log(res.sideBarStats)
+
+    next()
+
 }
 
-
-
-async function getHunger(req, res) {
-    Pet.getPetFullness("Tempuser")
-}
-
-module.exports = {getHappiness, getHunger}
+module.exports = {sideBarData}

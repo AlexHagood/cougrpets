@@ -18,9 +18,11 @@ async function removePetFullness(username)
 
 }
 
+i = 30
+
 async function getPetHappiness(username)
 {
-    return 55
+    return i+=10;
 }
 
 async function addPetHappiness(username, hungerValue)

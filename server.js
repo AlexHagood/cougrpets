@@ -48,10 +48,13 @@ app.use(
 const authenticationRouter = require("./routes/authenticate.js")
 const shopRoutes = require("./routes/shopRoutes.js");
 const inventoryRoutes = require("./routes/inventoryRoutes.js")
+const petStatusRoutes = require("./routes/petStatusRoutes.js");
+const { sideBarData } = require("./controllers/petStatus.js");
 
 app.use("/inventory", inventoryRoutes);
 app.use(authenticationRouter);
 app.use("/shop", shopRoutes);
+app.use("/", sideBarData);
 
 app.get("/", (req, res) => {
 	res.redirect("/inventory");
@@ -63,14 +66,15 @@ app.use((req, res, next) => {
   // Combine sidebar and content
   console.log("in main")
 
+  
   if (!res.contentHTML)
   {
     res.contentHTML = ejs.renderFile(__dirname + "/views" + req.path + ".ejs")
   }
-
+  console.log(res.sideBarStats)
   res.contentHTML.then((content) => 
   {
-    res.render("base", { content: content }, (error, html) => {
+    res.render("base", { content: content, happiness : res.sideBarStats.happiness, hunger : res.sideBarStats.hunger }, (error, html) => {
       if (error) {
         console.log("404 Error!")
         console.error(error)

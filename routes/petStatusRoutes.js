@@ -5,6 +5,7 @@ const petStatusController = require('../controllers/petStatus');
 
 
 
-router.get("/", petStatusController.getHappiness, petStatusController.getHunger);
+router.get("/", petStatusController.sideBarData);
+
 
 module.exports = router;
