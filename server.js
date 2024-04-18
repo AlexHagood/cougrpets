@@ -74,7 +74,7 @@ app.use((req, res, next) => {
   console.log(res.sideBarStats)
   res.contentHTML.then((content) => 
   {
-    res.render("base", { content: content, happiness : res.sideBarStats.happiness, hunger : res.sideBarStats.hunger }, (error, html) => {
+    res.render("base", { content: content, happiness : res.sideBarStats.happiness, hunger : res.sideBarStats.hunger, money : res.sideBarStats.money }, (error, html) => {
       if (error) {
         console.log("404 Error!")
         console.error(error)

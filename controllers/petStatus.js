@@ -1,17 +1,21 @@
 const Pet = require('../models/pet');
+const Money = require('../models/money')
 
 
 
 
 async function sideBarData (req, res, next){
-    petHunger = await Pet.getPetFullness()
-    petHappiness = await Pet.getPetHappiness()
+    petHunger = await Pet.getPetFullness("Tempuser")
+    petHappiness = await Pet.getPetHappiness("Tempuser")
+    userMoney = await Money.getBalance("Tempuser")
     console.log("rendering sidebar stuff")
-    console.log("pet happiness: ", petHappiness)
+    console.log("money: ", userMoney)
+
     
     res.sideBarStats = { 
     happiness : petHappiness,
-    hunger : petHunger
+    hunger : petHunger,
+    money : userMoney
     }
     
     console.log(res.sideBarStats)
