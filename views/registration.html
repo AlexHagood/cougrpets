@@ -20,7 +20,7 @@
             <b>Register for</b>
             <img style="height: 20%;" src="images/logo.png">
 
-            <form action="/register" method="POST">
+            <form>
                 <label for="username">Username: </label>
                 <input type="text" id="username" name="username">
                 <label for="password">Password: </label>
@@ -28,12 +28,65 @@
                 <label for="password2">Re-enter Password: </label>
                 <input type="password" id="password2" name="password">
                 <br>
-                <input type="submit" value="Signup!">
+                <input type="button" value="Signup!" onclick="submitRegistration()">
             </form>
             <div style="font-size: 15px; padding-top: 5px;">Already have an account? <a href="login">Login</a></div>
+            <div id="msgbox"></div>
         </div>
     </div>
 
 </body>
 
 </html>
+
+<script>
+    msgbox = document.getElementById("msgbox")
+
+    function notify(words)
+    {
+        msgbox.textContent = words
+    }
+    function submitRegistration()
+    {
+        console.log("Attempting login...");
+        password = document.getElementById("password").value;
+        password2 = document.getElementById("password2").value;
+        username = document.getElementById("username").value;
+
+        data = {
+            password : password,
+            password2: password2,
+            username : username
+        }
+        if (!(password === password2))
+        {
+            notify("Passwords dont match!");
+            return;
+        }
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            }
+            ,
+            body: JSON.stringify(data)
+        })
+        .then(Response => {
+            console.log(Response.status)
+            if (Response.status == 200)
+        { 
+            window.location.href = Response.url;
+            return "success";
+        }
+            else return Response.text();
+        })
+        .then(data => {
+            notify(data)
+        })
+        .catch(error => {
+            notify("Unknown server error, try again later.")
+            console.log(error)
+        })
+
+        }
+</script>

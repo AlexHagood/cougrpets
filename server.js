@@ -61,6 +61,10 @@ app.get("/", (req, res) => {
 	res.redirect("/inventory");
 });
 
+app.get("/home", (req, res) => {
+	res.redirect("/inventory");
+});
+
 
 // The default router!!
 app.use((req, res, next) => {

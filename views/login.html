@@ -20,18 +20,65 @@
             <b>Welcome to</b>
             <img style="height: 20%;" src="images/logo.png">
             <br>
-            <form action="/login" method="POST">
+            <form>
                 <label for="username">Username: </label>
                 <input type="text" id="username" name="username">
                 <label for="password">Password: </label>
                 <input type="password" id="password" name="password">
                 <br>
-                <input type="submit" value="Login">
+                <input type="button" value="Login" onclick="submitLogin()">
             </form>
             <div style="font-size: 15px; padding-top: 5px;">Not registered? <a href="register">Sign up</a></div>
+            <div id="msgbox"></div>
         </div>
     </div>
 
 </body>
 
 </html>
+
+
+
+<script>
+    msgbox = document.getElementById("msgbox")
+
+    function notify(words)
+    {
+        msgbox.textContent = words
+    }
+    function submitLogin()
+    {
+        console.log("Attempting login...");
+        password = document.getElementById("password").value;
+        username = document.getElementById("username").value;
+        data = {
+            password : password,
+            username : username
+        }
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            }
+            ,
+            body: JSON.stringify(data)
+        })
+        .then(Response => {
+            console.log(Response.status)
+            if (Response.status == 200)
+        { 
+            window.location.href = Response.url;
+            return "success";
+        }
+            else return Response.text();
+        })
+        .then(data => {
+            notify(data)
+        })
+        .catch(error => {
+            notify("Unknown server error, try again later.")
+            console.log(error)
+        })
+
+        }
+</script>

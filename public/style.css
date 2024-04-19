@@ -218,3 +218,10 @@ background-color: #fad1d9;
     width: 400px;
     font-size: 25px;
 }
+
+#msgbox {
+    padding-top: 20px;
+    height: 40px;
+    color: red;
+    font-weight: 50;
+}

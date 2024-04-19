@@ -1,5 +1,6 @@
 const User = require('./Users')
 const Profile = require('./Profile')
+const { use } = require('../routes/authenticate')
 
 
 async function registerUser(username, password)
@@ -25,12 +26,15 @@ async function authenticateUser(username, password)
     console.log("checking for user "+username+" with password "+password+" (check 2)")
     // This should return true if the login is valid, false if it isn't
     const user = await User.findUser(username, password)
-    console.log(user)
-    console.log("checking for user "+user.username+" with password "+user.password+" (check 3)")
+    //console.log("checking for user "+user.username+" with password "+user.password+" (check 3)")
+
+
     if (user){
-        return true
-    }
-    return false
+    console.log("Login success!")
+    return true
+    } else {
+    console.log("Login failed!")
+    return false }
 }
 
 async function changePassword(username, oldpassword, newpassword) 

@@ -19,7 +19,8 @@ async function register(req, res) {
     await authModel.registerUser(username, password[0]);
     console.log(`New user ${username} registered sucessfully!`);
     req.session.user = { username }
-    res.redirect("/inventory");
+
+    res.redirect("/home");
 
   }} catch (error){
 
@@ -34,12 +35,19 @@ async function login(req, res) {
 
     console.log("Authenticating user "+username+" (check 1)")
 
-    validLogin = await authModel.authenticateUser(username, password)
+    userExists = await authModel.checkUser(username);
+    if (!userExists)
+    {
+      console.log("User doesn't exist!")
+      res.status(500).send("User not found");
+      return
+    }
 
+    validLogin = await authModel.authenticateUser(username, password)
     if (validLogin) {
       console.log(`User ${username} logged in`); 
       req.session.user = { username }
-      res.redirect("/inventory")
+      res.redirect("/home")
     } else {
       console.log(`User ${username} failed to log in`); 
       res.status(401).send("Bad login!");}
