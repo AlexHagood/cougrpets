@@ -8,7 +8,7 @@ class User extends Model{
             if(user && user.password === password){
                 return user;
             }else{
-                return null;
+                return false;
             }
         }catch(error){
             console.log(error);
