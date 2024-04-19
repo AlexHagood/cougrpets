@@ -50,6 +50,7 @@ const shopRoutes = require("./routes/shopRoutes.js");
 const inventoryRoutes = require("./routes/inventoryRoutes.js")
 const petStatusRoutes = require("./routes/petStatusRoutes.js");
 const { sideBarData } = require("./controllers/petStatus.js");
+const { Inventory } = require("./models/inventory.js");
 
 app.use("/inventory", inventoryRoutes);
 app.use(authenticationRouter);
@@ -105,7 +106,8 @@ app.listen(3000, () => {
 
 // async function setup(){
 //     const user1 = await User.create({username: "Sierra", password:"voiland"});
-//     const profile1 = await Profile.create({username: "Sierra", petname:"Ridley"});
+//     const profile1 = await Profile.create({username: "Sierra", petname:"Butch", money: 100, food: 100, happiness: 100});
+//     const inventory1 = await Inventory.create({username: "Sierra", blackLentil: 10, greenLentil: 10, redLentil: 10, chicken: 10})
 // }
 
 // sequelize.sync({force: true}).then(() =>{

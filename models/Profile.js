@@ -4,7 +4,7 @@ const {Model, DataTypes} = require('sequelize')
 class Profile extends Model{
     static async findUser(username, petname){
         try{
-            const user = await User.findByPk(username);
+            const user = await Profile.findByPk(username);
             if(user && user.petname === petname){
                 return user;
             }else{
@@ -25,6 +25,18 @@ Profile.init({
     },
     petname:{
         type: DataTypes.STRING,
+        allowNull: false
+    },
+    money:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    food:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    happiness:{
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 }, {

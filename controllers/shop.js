@@ -13,12 +13,14 @@ async function purchase(req, res){
     const itemID = req.body.itemID;
     const price = Item.getItemByID(itemID).price
 
-    Money.getBalance("tempUser")
+    let user = req.session.user.username
+
+    Money.getBalance(user)
     .then(Balance => {
         console.log("userbal:", Balance, price)
     if (Balance > price) {
-        Money.subtractBalance("tempUser", price)
-        Inventory.addItem("tempUser", itemID)
+        Money.subtractBalance(user, price)
+        Inventory.addItem(user, itemID)
         res.send("Thank you for your purchase!")
     } else { // insufficient funds
         res.send("Get out of my shop brokie!")

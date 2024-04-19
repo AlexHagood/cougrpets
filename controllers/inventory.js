@@ -8,9 +8,8 @@ const ejs = require("ejs");
 
 async function getInventory(req, res, next){
     
-
-    packedInv = await Inventory.getInventory()
-    console.log("rendering stuff")
+    username = req.session.user.username
+    packedInv = await Inventory.getInventory(username)
     
     res.contentHTML = 
     ejs.renderFile(__dirname + '/../views/inventory.ejs', { 
