@@ -31,9 +31,21 @@
         .then(data=> {
             console.log(data);
             document.getElementById(divID).remove();
+            fetch('/sideBarData', {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'}
+            })
+            .then (data=> {
+                console.log(data)
+                document.getElementById("happiness").value = 4
+            })
+            .catch(error => {
+                console.err(err)
+            })
         })
         .catch(error => {
             console.err(err);
         })
+
     }
 </script>

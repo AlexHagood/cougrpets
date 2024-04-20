@@ -79,6 +79,10 @@ function round(){
     }
 
     let oIndex = -1;
+    if (countBlank(board) == 8) {
+        console.log("first turn")
+    }
+    console.log("board blanks: ", countBlank(board))
     const newBoard = minimax(board);
     for (let i = 0; i < 9; i++){
         if (board[i] !== newBoard[i]){

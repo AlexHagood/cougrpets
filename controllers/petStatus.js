@@ -23,4 +23,9 @@ async function sideBarData (req, res, next){
 
 }
 
-module.exports = {sideBarData}
+async function sendSideBar (req, res, next) {
+    res.json(res.sideBarStats)
+    next()
+}
+
+module.exports = {sideBarData, sendSideBar}

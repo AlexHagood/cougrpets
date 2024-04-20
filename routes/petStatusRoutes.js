@@ -7,5 +7,7 @@ const petStatusController = require('../controllers/petStatus');
 
 router.get("/", petStatusController.sideBarData);
 
+router.get("/sideBarData", petStatusController.sendSideBar);
+
 
 module.exports = router;
