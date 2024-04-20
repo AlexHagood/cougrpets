@@ -32,26 +32,16 @@ class Inventory extends Model{
     }
 
     // converts {ID: Quantity, ...} form to a array of all items.
-    static async unpackInventory(packed)
+    static async unpackInventory(username)
     {
-        //console.log("packed: "+ packed)
         let unpacked = []
-        // for (let key in packed)
-        // {
-        //     console.log("key: "+key)
-        //     for (let i = 0; i < packed[key]; i++)
-        //     {
-        //         unpacked.push(getItemByID(key))
-        //     }
-        // }
+        const inventory = await Inventory.findOne({
+            where: {username : username}
+        })
         for (let key in idDic){
-            let invQuery = "SELECT " + idDic[key] + " FROM 'Inventories' WHERE username = '" + packed.username + "'";
-            const result = await sequelize.query(invQuery, {
-                type: QueryTypes.SELECT,
-              });
-              //this is how to get the quantity from the result of the query
-            const quantity = result[0][idDic[key]];
-            for(let i = 0; i <quantity; i++){
+            console.log(idDic[key]);
+            let quantity = inventory[idDic[key]];
+            for(let i = 0; i < quantity; i++){
                 unpacked.push(getItemByID(key))
             }
         }
@@ -61,8 +51,7 @@ class Inventory extends Model{
     static async addItem(username, itemId)
     {
 
-        // THIS IS ALL TEMPORARY
-        let invQuery = "SELECT " + idDic[itemId] + " FROM 'Inventories' WHERE username = '" + username + "'";
+        let invQuery = "SELECT " + idDic[itemId] + " FROM 'Inventories' WHERE username = '" + username + "';";
         const result = await sequelize.query(invQuery, {
             type: QueryTypes.SELECT,
             });

@@ -24,8 +24,19 @@ async function sideBarData (req, res, next){
 }
 
 async function sendSideBar (req, res, next) {
-    res.json(res.sideBarStats)
-    next()
+    console.log("User requested sidebar update.");
+    petHunger = await Pet.getPetFullness("Tempuser")
+    petHappiness = await Pet.getPetHappiness("Tempuser")
+    userMoney = await Money.getBalance("Tempuser")
+    console.log("rendering sidebar stuff")
+
+    
+    let sideBarStats = { 
+    happiness : petHappiness,
+    hunger : petHunger,
+    money : userMoney
+    }
+    res.json(sideBarStats)
 }
 
 module.exports = {sideBarData, sendSideBar}
