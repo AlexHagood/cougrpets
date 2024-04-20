@@ -47,11 +47,13 @@ app.use(
 // Our routers!!
 const authenticationRouter = require("./routes/authenticate.js")
 const shopRoutes = require("./routes/shopRoutes.js");
-const inventoryRoutes = require("./routes/inventoryRoutes.js")
+const inventoryRoutes = require("./routes/inventoryRoutes.js");
+const profileRoutes = require("./routes/profileRoutes.js");
 const petStatusRoutes = require("./routes/petStatusRoutes.js");
 const { sideBarData } = require("./controllers/petStatus.js");
-const { Inventory } = require("./models/inventory.js");
+const { error } = require("console");
 
+app.use("/profile", profileRoutes);
 app.use("/inventory", inventoryRoutes);
 app.use(authenticationRouter);
 app.use("/shop", shopRoutes);
@@ -62,7 +64,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-	res.redirect("/inventory");
+	res.redirect("/gameselect");
 });
 
 
@@ -74,16 +76,19 @@ app.use((req, res, next) => {
   
   if (!res.contentHTML)
   {
+
     res.contentHTML = ejs.renderFile(__dirname + "/views" + req.path + ".ejs")
+
   }
+
   console.log(res.sideBarStats)
   res.contentHTML.then((content) => 
   {
+
     res.render("base", { content: content, happiness : res.sideBarStats.happiness, hunger : res.sideBarStats.hunger, money : res.sideBarStats.money }, (error, html) => {
       if (error) {
-        console.log("404 Error!")
         console.error(error)
-        res.status(404).sendFile(__dirname + "/public/404.html")
+        res.status(500).send("Site broken on a render.")
       } else {
         res.send(html)
       }
@@ -110,8 +115,7 @@ app.listen(3000, () => {
 
 // async function setup(){
 //     const user1 = await User.create({username: "Sierra", password:"voiland"});
-//     const profile1 = await Profile.create({username: "Sierra", petname:"Butch", money: 100, food: 100, happiness: 100});
-//     const inventory1 = await Inventory.create({username: "Sierra", blackLentil: 10, greenLentil: 10, redLentil: 10, chicken: 10})
+//     const profile1 = await Profile.create({username: "Sierra", petname:"Ridley"});
 // }
 
 // sequelize.sync({force: true}).then(() =>{

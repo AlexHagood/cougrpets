@@ -10,10 +10,13 @@ async function getInventory(req, res, next){
     
     username = req.session.user.username
     packedInv = await Inventory.getInventory(username)
+
+    inventory = await Inventory.unpackInventory(packedInv)
+
     
     res.contentHTML = 
     ejs.renderFile(__dirname + '/../views/inventory.ejs', { 
-    inventory : Inventory.unpackInventory(packedInv)
+    inventory : inventory
     })
 
 
@@ -25,9 +28,9 @@ async function getInventory(req, res, next){
 async function eatItem(req, res){
     const itemID = req.body.itemID;
     const saturation = Item.getItemByID(itemID).saturation
-
-    Inventory.popItem("TempUser", itemID)
-    Pet.addPetFullness("Tempuser", saturation)
+    const username = req.session.user.username
+    Inventory.popItem(username, itemID)
+    Pet.addPetFullness(username, saturation)
     res.send("Yum!")
 
 }

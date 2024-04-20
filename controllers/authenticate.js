@@ -12,8 +12,9 @@ async function register(req, res) {
 
   if (userExists) {
 
-    console.log(`Duplicate user ${username} attempted to register`); res.status(400).send("User already exists!");
-
+    console.log(`Duplicate user ${username} attempted to register`); 
+    res.status(400).send("User already exists!");
+d
   } else {
 
     await authModel.registerUser(username, password[0]);
