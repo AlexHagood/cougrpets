@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Profile = require('../models/Profile')
+const ejs = require("ejs")
 
 // Alternate login implementation 
 
@@ -36,10 +37,12 @@ const Profile = require('../models/Profile')
 //     res.render('profiles', {profiles});
 // })
 
-router.get('/profile', (req, res) => {
+router.get('/', (req, res, next) => {
     console.log("profile router");
     username = req.session.user.username
-    res.render("profile", {username : username})
+    console.log("Acessing profile page with user", username);
+    res.contentHTML = ejs.renderFile(__dirname + "/../views/profile.ejs", {username : username})
+    next();
 })
 
 module.exports = router
