@@ -55,7 +55,6 @@ class Inventory extends Model{
                 unpacked.push(getItemByID(key))
             }
         }
-        console.log(unpacked)
         return unpacked;
     }
 
@@ -79,23 +78,44 @@ class Inventory extends Model{
 
     static async popItem(username, itemId)
     {
+
+        Inventory.findOne({
+            where: {username : username}
+
+        })
+        .then(inventory => {
+            if (inventory) {
+                inventory.decrement(idDic[itemId], {by : 1});
+            } else {
+                console.log(`Inventory for user ${username} not found...`);
+            }
+        })
+        .catch(error => {
+            console.error("Error updating inventory:", error);
+        })
+
+
         // TEMPORARY
-        let invQuery = "SELECT " + idDic[itemId] + " FROM 'Inventories' WHERE username = '" + username + "'";
-        const result = await sequelize.query(invQuery, {
-            type: QueryTypes.SELECT,
-            });
-        //console.log(JSON.stringify(result, null, 4))
-        let quantity = result[0][idDic[itemId]];
-        if (quantity > 0)
-        {
-            quantity --;
-            invQuery = "UPDATE 'Inventories' SET " + idDic[itemId] + " = " + quantity + " WHERE username = '" + username + "'";
-            await sequelize.query(invQuery, {
-                type: QueryTypes.UPDATE,
-            });
-        } else {
-            console.log("How did you do that!?")
-        }
+        
+        // let invQuery = "SELECT " + idDic[itemId] + " FROM 'Inventories' WHERE username = '" + username + "'";
+        // const result = await sequelize.query(invQuery, {
+        //     type: QueryTypes.SELECT,
+        //     });
+
+        
+
+        // //console.log(JSON.stringify(result, null, 4))
+        // let quantity = result[0][idDic[itemId]];
+        // if (quantity > 0)
+        // {
+        //     quantity --;
+        //     invQuery = "UPDATE 'Inventories' SET " + idDic[itemId] + " = " + quantity + " WHERE username = '" + username + "'";
+        //     await sequelize.query(invQuery, {
+        //         type: QueryTypes.UPDATE,
+        //     });
+        // } else {
+        //     console.log("How did you do that!?")
+        // }
 
 
 
