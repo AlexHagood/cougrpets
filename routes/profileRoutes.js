@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.R
-const Profile = require('../controllers/Profile')
+const Profile = require('../controllers/profile')
 const ejs = require("ejs")
 
 // Alternate login implementation 
