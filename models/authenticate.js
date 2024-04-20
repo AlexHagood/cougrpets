@@ -37,14 +37,14 @@ async function authenticateUser(username, password)
     return false }
 }
 
-async function changePassword(username, oldpassword, newpassword) 
+async function changePassword(username, newpassword) 
 {
-    
+    //SIERRA PUT YOUR DB CODE HERE
 }
 
-async function changeUsername(oldusername, newusername, password) 
+async function changeUsername(oldusername, newusername) 
 {
-    
+    //SIERRA PUT YOUR DB CODE HERE
 }
 
 module.exports = {

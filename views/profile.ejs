@@ -1,7 +1,8 @@
 <script>document.body.className = "bg-color";</script>
 <div class="content">
    <h1>Profile</h1>
-   <p>Username: <%=username %></p>
+   <p>Username: <%=username%>
+   </p>
    <p>Stats:</p>
    <p>Money:</p>
    <br>
@@ -12,17 +13,85 @@
       <label for="password2">Certify New Username: </label>
       <input type="text" id="newusername2" name="username">
       <br>
-      <input type="submit" value="Change Username">
+      <input type="submit" value="Change Username" onClick="changeUsername()">
    </form>
    <br>
    <h2>Want to change your password?</h2>
    <form method="post">
-      <label for="password">Password: </label>
+      <label for="password">New Password: </label>
       <input type="password" id="newpassword" name="password">
       <label for="password2">Certify New Password: </label>
       <input type="password" id="newpassword2" name="password">
       <br>
-      <input type="submit" value="Change Password">
+      <input type="submit" value="Change Password" onClick="changePassword()">
    </form>
    <a href="/logout">Logout</a>
 </div>
+
+<script>
+   msgbox = document.getElementById("msgbox")
+
+   function notify(words) {
+      msgbox.textContent = words
+   }
+   function changePassword() {
+      newpassword = document.getElementById("newpassword").value;
+      data = {
+         newpassword: newpassword
+      }
+      fetch('/password', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+         }
+         ,
+         body: JSON.stringify(data)
+      })
+         .then(Response => {
+            console.log(Response.status)
+            if (Response.status == 200) {
+               window.location.href = Response.url;
+               return "success";
+            }
+            else return Response.text();
+         })
+         .then(data => {
+            notify(data)
+         })
+         .catch(error => {
+            notify("Unknown server error, try again later.")
+            console.log(error)
+         })
+
+   }
+
+   function changeUsername() {
+      newuser = document.getElementById("newusername").value;
+      data = {
+         newuser : newuser
+      }
+      fetch('/username', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+         }
+         ,
+         body: JSON.stringify(data)
+      })
+         .then(Response => {
+            console.log(Response.status)
+            if (Response.status == 200) {
+               window.location.href = Response.url;
+               return "success";
+            }
+            else return Response.text();
+         })
+         .then(data => {
+            notify(data)
+         })
+         .catch(error => {
+            notify("Unknown server error, try again later.")
+            console.log(error)
+         })
+   }
+</script>

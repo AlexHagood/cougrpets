@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const Profile = require('../models/Profile')
+const Profile = require('../controllers/profile')
 
 // Alternate login implementation 
 
@@ -41,5 +41,8 @@ router.get('/profile', (req, res) => {
     username = req.session.user.username
     res.render("profile", {username : username})
 })
+
+router.post('/password', Profile.changePass)
+router.post('/username', Profile.changeUser)
 
 module.exports = router
