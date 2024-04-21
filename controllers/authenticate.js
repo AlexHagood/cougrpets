@@ -21,8 +21,9 @@ async function register(req, res) {
     res.status(400).send("User already exists!");
 
   } else {
-
+    
     await authModel.registerUser(username, password[0]);
+    createDBsIfEmpty(username);
     console.log(`New user ${username} registered sucessfully!`);
     req.session.user = { username }
 
@@ -38,9 +39,7 @@ async function register(req, res) {
 async function login(req, res) {
   try{
     const { username, password} = req.body;
-
     console.log("Authenticating user "+username+" (check 1)")
-
     userExists = await authModel.checkUser(username);
     if (!userExists)
     {
@@ -50,29 +49,10 @@ async function login(req, res) {
     }
 
     validLogin = await authModel.authenticateUser(username, password)
+
+
     if (validLogin) {
-      const [profile, created] = await Profile.findOrCreate({
-        where : {username},
-        defaults: {
-          petname : "Butch",
-          money: 100,
-          food: 100,
-          happiness: 100
-        }
-      })
-
-      const [inventory, created2] = await Inventory.findOrCreate({
-        where : {username},
-        defaults: {
-          blackLentil : 1,
-          redLentil : 1,
-          greenLentil : 1,
-          chicken : 1
-        }
-      })
-
-
-
+      createDBsIfEmpty(username);
       console.log(`User ${username} logged in`); 
       req.session.user = { username }
       res.redirect("/home")
@@ -86,6 +66,30 @@ async function login(req, res) {
       res.status(500).send("Internal server error");
 
     }
+}
+
+function createDBsIfEmpty(username){
+
+    const [profile, created] = await Profile.findOrCreate({
+      where : {username},
+      defaults: {
+        petname : "Butch",
+        money: 100,
+        food: 100,
+        happiness: 100
+      }
+    })
+
+    const [inventory, created2] = await Inventory.findOrCreate({
+      where : {username},
+      defaults: {
+        blackLentil : 1,
+        redLentil : 1,
+        greenLentil : 1,
+        chicken : 1
+      }
+    })
+
 }
 
 
