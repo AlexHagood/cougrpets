@@ -1,11 +1,12 @@
-async function getPetName(username)
+async function getPetName(user)
 {
-    return "Butch"
+    return user.petname;
 }
 
 j = 0
-async function getPetFullness(username)
+async function getPetFullness(user)
 {
+    var satiety = user.food;
     removePetFullness()
     return j
 }
@@ -23,8 +24,9 @@ async function removePetFullness(username)
 
 i = 100
 
-async function getPetHappiness(username)
+async function getPetHappiness(user)
 {
+    happiness = user.happiness;
     removePetHappiness()
     return i
 }
