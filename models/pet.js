@@ -1,44 +1,57 @@
+const Profile = require('./Profile')
+
 async function getPetName(user)
 {
-    return user.petname;
+    return "Butch";
 }
 
-j = 0
 async function getPetFullness(user)
-{
-    var satiety = user.food;
-    removePetFullness()
-    return j
+{   
+    profile = await Profile.findByPk(user)
+    removePetFullness(user)
+    return profile.food
 }
 
-async function addPetFullness(username, hungerValue)
+async function addPetFullness(username, saturation)
 {
-    j += hungerValue
+    profile = await Profile.findByPk(username)
+    profile.food += saturation
+    await profile.save()
 
 }
 
 async function removePetFullness(username)
 {
-    j -= 1
+    profile = await Profile.findByPk(username)
+    if (profile.food > 0 ) {
+        profile.food -= 2
+        await profile.save()
+    }
 }
 
-i = 100
+
 
 async function getPetHappiness(user)
 {
-    happiness = user.happiness;
-    removePetHappiness()
-    return i
+    profile = await Profile.findByPk(user)
+    removePetHappiness(user)
+    return profile.happiness
 }
 
 async function addPetHappiness(username, hungerValue)
 {
-    i += 15
+    profile = await Profile.findByPk(username)
+    profile.happiness += 30
+    await profile.save()
 }
 
 async function removePetHappiness(username)
 {
-    i-= 1
+    profile = await Profile.findByPk(username)
+    if (profile.happiness > 0 ) {
+        profile.happiness -= 2
+        await profile.save()
+    }
 }
 
 module.exports = {
