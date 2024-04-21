@@ -11,6 +11,13 @@ async function registerUser(username, password)
         username: username,
         password: password,
     })
+    await Profile.create({
+        username: username,
+        petname : "Butch",
+        money : 100,
+        food: 100,
+        happiness : 100
+    })
     return true
 }
 

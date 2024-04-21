@@ -1,4 +1,9 @@
+const { where } = require("sequelize");
 const authModel = require("../models/authenticate.js");
+const { getPetName } = require("../models/pet.js");
+const Profile = require("../models/Profile.js");
+const Inventory = require("../models/inventory.js");
+
 
 function errorHandler(res, error) {
   console.error(error);
@@ -46,6 +51,28 @@ async function login(req, res) {
 
     validLogin = await authModel.authenticateUser(username, password)
     if (validLogin) {
+      const [profile, created] = await Profile.findOrCreate({
+        where : {username},
+        defaults: {
+          petname : "Butch",
+          money: 100,
+          food: 100,
+          happiness: 100
+        }
+      })
+
+      const [inventory, created2] = await Inventory.findOrCreate({
+        where : {username},
+        defaults: {
+          blackLentil : 1,
+          redLentil : 1,
+          greenLentil : 1,
+          chicken : 1
+        }
+      })
+
+
+
       console.log(`User ${username} logged in`); 
       req.session.user = { username }
       res.redirect("/home")
