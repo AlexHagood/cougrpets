@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.R
+var router = express.Router();
 const Profile = require('../controllers/Profile')
 const ejs = require("ejs")
 
