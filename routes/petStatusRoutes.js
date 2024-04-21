@@ -4,10 +4,10 @@ const petStatusController = require('../controllers/petStatus');
 
 
 
+router.get("/updateSidebar", petStatusController.sendSideBar);
 
 router.get("/", petStatusController.sideBarData);
 
-router.get("/sideBarData", petStatusController.sendSideBar);
 
 
 module.exports = router;

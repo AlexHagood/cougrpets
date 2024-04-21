@@ -9,9 +9,8 @@ const ejs = require("ejs");
 async function getInventory(req, res, next){
     
     username = req.session.user.username
-    packedInv = await Inventory.getInventory(username)
 
-    inventory = await Inventory.unpackInventory(packedInv)
+    inventory = await Inventory.unpackInventory(username)
 
     
     res.contentHTML = 

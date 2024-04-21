@@ -28,15 +28,15 @@ app.use(
 
 
 //If a user doesn't log in, they must make an account or log in!
-// app.use((req, res, next) => {
-//   if (req.session.user || req.path === "/login" || req.path === "/register") 
-//   {
-//     next();
-//   }
-//   else {
-//     res.redirect("/login")
-//   }
-// });
+app.use((req, res, next) => {
+  if (req.session.user || req.path === "/login" || req.path === "/register") 
+  {
+    next();
+  }
+  else {
+    res.redirect("/login")
+  }
+});
 
 
 
@@ -58,13 +58,15 @@ app.use("/inventory", inventoryRoutes);
 app.use(authenticationRouter);
 app.use("/shop", shopRoutes);
 app.use("/", sideBarData);
+app.use(petStatusRoutes);
+
 
 app.get("/", (req, res) => {
 	res.redirect("/inventory");
 });
 
 app.get("/home", (req, res) => {
-	res.redirect("/gameselect");
+	res.redirect("/inventory");
 });
 
 
