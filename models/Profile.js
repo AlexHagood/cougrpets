@@ -29,15 +29,19 @@ Profile.init({
     },
     money:{
         type: DataTypes.INTEGER,
-        allowNull: false
+        defaultValue: 0
     },
     food:{
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 100
     },
     happiness:{
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 100
+
+
     }
 }, {
     sequelize,

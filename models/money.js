@@ -9,8 +9,8 @@ async function getBalance(username){
 
 async function addBalance(username, addition)
 {
-    profile = await Profile.findByPk(username)
-    profile.money += addition;
+    profile = await Profile.findByPk(username);
+    profile.money = profile.money + addition;
     await profile.save();
 
 }

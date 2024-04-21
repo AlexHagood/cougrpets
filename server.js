@@ -45,6 +45,7 @@ app.use((req, res, next) => {
 
 
 // Our routers!!
+
 const authenticationRouter = require("./routes/authenticate.js")
 const shopRoutes = require("./routes/shopRoutes.js");
 const inventoryRoutes = require("./routes/inventoryRoutes.js");
@@ -52,6 +53,8 @@ const profileRoutes = require("./routes/profileRoutes.js");
 const petStatusRoutes = require("./routes/petStatusRoutes.js");
 const { sideBarData } = require("./controllers/petStatus.js");
 const { error } = require("console");
+const buyMoneyRoutes = require("./routes/buyMoney.js");
+
 
 app.use("/profile", profileRoutes);
 app.use("/inventory", inventoryRoutes);
@@ -59,6 +62,7 @@ app.use(authenticationRouter);
 app.use("/shop", shopRoutes);
 app.use("/", sideBarData);
 app.use(petStatusRoutes);
+app.use("/purchasemoney", buyMoneyRoutes);
 
 
 app.get("/", (req, res) => {

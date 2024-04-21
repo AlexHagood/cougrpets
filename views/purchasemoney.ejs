@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Buy more money?</h1>
+    <p>Because who doesn't need more money, right?</p>
+    <form action="/purchasemoney" method="post">
+
+        <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Name on Card" required>
+            <input type="text" class="form-control" name="cardNumber" placeholder="Card Number" required>
+            <input type="text" class="form-control" name="expiry" placeholder="MM/YY" required>
+            <small id="ccInfo" class="form-text text-muted">Your CC info is safe with us.</small>
+        </div>
+    
+        <div class="form-row">
+            <div class="col">
+                <label for="amount" style="margin-top: 1%;">How much money?</label>
+                <select class="form-control" name="amount" required>
+                    <option value="100">$5 USD for $100 Cougar Cash</option>
+                    <option value="500">$10 for $500 Cougar Cash</option>
+                    <option value="2000">$20 for $2000 Cougar Cash</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Buy Money</button>
+    </form>
+    <p class="mt-3">Disclaimer: Buying money might not solve all your problems.</p>
+</div>
