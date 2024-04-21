@@ -116,7 +116,7 @@ app.listen(3000, () => {
 // DB Initialization!
 async function setup() {
   const user1 = await User.create({ username: "admin", password: "admin" });
-  const profile1 = await Profile.create({ username: "admin", petname: "Butch", money: 0, food: 50, happiness: 50 });
+  const profile1 = await Profile.create({ username: "admin", petname: "Butch", money: 100, food: 50, happiness: 50 });
 }
 
 sequelize.sync({ }).then(() => {
