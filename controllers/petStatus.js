@@ -5,9 +5,11 @@ const Money = require('../models/money')
 
 
 async function sideBarData (req, res, next){
-    petHunger = await Pet.getPetFullness("Tempuser")
-    petHappiness = await Pet.getPetHappiness("Tempuser")
-    userMoney = await Money.getBalance("Tempuser")
+    username = req.session.user.username;
+
+    petHunger = await Pet.getPetFullness(username);
+    petHappiness = await Pet.getPetHappiness(username);
+    userMoney = await Money.getBalance(username);
     console.log("rendering sidebar stuff")
 
     
@@ -23,11 +25,12 @@ async function sideBarData (req, res, next){
 
 }
 
-async function sendSideBar (req, res, next) {
+async function sendSideBar (req, res) {
     console.log("User requested sidebar update.");
-    petHunger = await Pet.getPetFullness("Tempuser")
-    petHappiness = await Pet.getPetHappiness("Tempuser")
-    userMoney = await Money.getBalance("Tempuser")
+    username = req.session.user.username;
+    petHunger = await Pet.getPetFullness(username);
+    petHappiness = await Pet.getPetHappiness(username);
+    userMoney = await Money.getBalance(username);
     console.log("rendering sidebar stuff")
 
     
