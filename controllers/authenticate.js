@@ -68,7 +68,7 @@ async function login(req, res) {
     }
 }
 
-function createDBsIfEmpty(username){
+async function createDBsIfEmpty(username){
 
     const [profile, created] = await Profile.findOrCreate({
       where : {username},
