@@ -60,12 +60,13 @@ app.use("/shop", shopRoutes);
 app.use("/", sideBarData);
 app.use(petStatusRoutes);
 
+
 app.get("/", (req, res) => {
 	res.redirect("/inventory");
 });
 
 app.get("/home", (req, res) => {
-	res.redirect("/gameselect");
+	res.redirect("/inventory");
 });
 
 
