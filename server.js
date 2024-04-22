@@ -125,9 +125,12 @@ async function setup() {
   const profile1 = await Profile.create({ username: "admin", petname: "Butch", money: 100, food: 50, happiness: 50 });
   const inventory1 = await Inventory.create({username: "admin", blackLentil: 0, greenLentil: 0, redLentil: 0, chicken: 0});
   }
+  catch(err) {
+    console.log(err)
+  }
 }
 
-sequelize.sync({force: true }).then(() => {
+sequelize.sync({ }).then(() => {
   console.log("Sync completed");
   setup().then(() => console.log("New user setup complete"))
 })

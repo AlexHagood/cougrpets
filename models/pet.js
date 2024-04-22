@@ -6,7 +6,6 @@ async function getPetName(user) {
 
 async function getPetFullness(user) {
     profile = await Profile.findByPk(user)
-    removePetFullness(user)
     return profile.food
 }
 
@@ -31,7 +30,6 @@ async function removePetFullness(username) {
 
 async function getPetHappiness(user) {
     profile = await Profile.findByPk(user)
-    removePetHappiness(user)
     return profile.happiness
 }
 
