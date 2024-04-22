@@ -49,18 +49,55 @@ submitButton.addEventListener("click", () =>
     let guess = inputBox.value;
     if (guess == lentilCount)
     {
-        alert("You guessed: " + guess + "... Good job!")
-        // access the add pet happiness function here?
+        submissionItems = document.getElementById("submission");
+        submissionItems.innerHTML = `<a href="/home"> Back to Home! </a>`;
+        winGame();
 
+        // access the add pet happiness function here?
     }
     else
     {
-        alert("You guessed: " + guess + "... try again!")
-
+        speak(`You guessed: ${guess}... try again!`);
     }
 
 
 });
 
+
+
+speechbox = document.getElementById("speak");
+
+function speak(words)
+{
+    speechbox.textContent = words
+}
+
+
+// This method of submitting wins is incredibly insecure, but not enough time to properly
+//verify. In the future, render the lentils by EJS, store the win # serverside, and check
+// there.
+function winGame()
+{
+    fetch('/games/lentilcounter', {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        }
+        ,
+        body: JSON.stringify({win: true})
+    })
+    .then(Response => {
+        return Response.text();
+    })
+    .then(data => {
+        speak(data)
+        updateSidebar();
+    })
+    .catch(error => {
+        speechbox.textContent = "You broke the server! Get outta my farm!"
+        console.log(error)
+    })
+
+    }
 
 document.addEventListener("DOMContentLoaded", startGame());
