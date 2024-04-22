@@ -124,6 +124,8 @@ async function setup() {
   const user1 = await User.create({ username: "admin", password: "admin" });
   const profile1 = await Profile.create({ username: "admin", petname: "Butch", money: 100, food: 50, happiness: 50 });
   const inventory1 = await Inventory.create({username: "admin", blackLentil: 0, greenLentil: 0, redLentil: 0, chicken: 0});
+  } catch {
+    console.log("Admin account creation failed, likely already exists. Nothing to worry about. ")
   }
   catch(err) {
     console.log(err)
