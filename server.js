@@ -54,7 +54,7 @@ const petStatusRoutes = require("./routes/petStatusRoutes.js");
 const { sideBarData } = require("./controllers/petStatus.js");
 const { error } = require("console");
 const buyMoneyRoutes = require("./routes/buyMoney.js");
-const gameRoutes = require("./routes/gameRouter.js");
+//const gameRoutes = require("./routes/gameRouter.js");
 
 
 
@@ -65,7 +65,7 @@ app.use("/shop", shopRoutes);
 app.use("/", sideBarData);
 app.use(petStatusRoutes);
 app.use("/purchasemoney", buyMoneyRoutes);
-app.use("/games", gameRoutes);
+//app.use("/games", gameRoutes);
 
 
 app.get("/", (req, res) => {
