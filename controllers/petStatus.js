@@ -29,7 +29,7 @@ async function sendSideBar (req, res) {
     console.log("User requested sidebar update.");
     username = req.session.user.username;
     await Pet.removePetFullness(username)
-    await Pet.removePetHappiness(username)
+    await Pet.removePetHappiness(username, 1)
     petHunger = await Pet.getPetFullness(username);
     petHappiness = await Pet.getPetHappiness(username);
     userMoney = await Money.getBalance(username);
