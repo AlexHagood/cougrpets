@@ -18,7 +18,7 @@ async function purchase(req, res){
     Money.getBalance(user)
     .then(Balance => {
         console.log("userbal:", Balance, price)
-    if (Balance > price) {
+    if (Balance >= price) {
         Money.subtractBalance(user, price)
         Inventory.addItem(user, itemID)
         res.send("Thank you for your purchase!")

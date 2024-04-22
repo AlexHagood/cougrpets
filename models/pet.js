@@ -34,14 +34,18 @@ async function getPetHappiness(user) {
     return profile.happiness
 }
 
-async function addPetHappiness(username, hungerValue) {
+async function addPetHappiness(username, hungerValue) 
+{
     console.log("adding happiness");
     profile = await Profile.findByPk(username)
-    if (profile.happiness < 100) {
-        profile.happiness += hungerValue
+    if (profile.happiness + hungerValue > 100) {
+        profile.happiness = 100;
+    } else {
+        profile.happiness += hungerValue;
+    } 
         await profile.save()
-    }
 }
+
 
 async function removePetHappiness(username, value) {
     profile = await Profile.findByPk(username)
