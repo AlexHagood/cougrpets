@@ -1,12 +1,13 @@
 const User = require('./Users')
 const Profile = require('./Profile')
+const Inventory = require('./inventory')
 const { use } = require('../routes/authenticate')
 
 
 async function registerUser(username, password)
 {
     // Add a new user to database
-    //console.log("Registering "+username+" "+password);
+    // console.log("Registering "+username+" "+password);
     await User.create({
         username: username,
         password: password,
@@ -17,6 +18,13 @@ async function registerUser(username, password)
         money : 100,
         food: 100,
         happiness : 100
+    })
+    await Inventory.create({
+        username: username, 
+        blackLentil: 0, 
+        greenLentil: 0, 
+        redLentil: 0, 
+        chicken: 0
     })
     return true
 }

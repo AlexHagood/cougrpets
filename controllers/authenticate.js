@@ -22,7 +22,7 @@ async function register(req, res) {
 
   } else {
     
-    await authModel.registerUser(username, password[0]);
+    await authModel.registerUser(username, password);
     createDBsIfEmpty(username);
     console.log(`New user ${username} registered sucessfully!`);
     req.session.user = { username }

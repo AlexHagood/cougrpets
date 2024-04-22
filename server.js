@@ -54,6 +54,7 @@ const petStatusRoutes = require("./routes/petStatusRoutes.js");
 const { sideBarData } = require("./controllers/petStatus.js");
 const { error } = require("console");
 const buyMoneyRoutes = require("./routes/buyMoney.js");
+const Inventory = require("./models/inventory.js");
 
 
 app.use("/profile", profileRoutes);
@@ -121,9 +122,10 @@ app.listen(3000, () => {
 async function setup() {
   const user1 = await User.create({ username: "admin", password: "admin" });
   const profile1 = await Profile.create({ username: "admin", petname: "Butch", money: 100, food: 50, happiness: 50 });
+  const inventory1 = await Inventory.create({username: "admin", blackLentil: 0, greenLentil: 0, redLentil: 0, chicken: 0});
 }
 
-sequelize.sync({ }).then(() => {
+sequelize.sync({force: true }).then(() => {
   console.log("Sync completed");
   setup().then(() => console.log("New user setup complete"))
 })
