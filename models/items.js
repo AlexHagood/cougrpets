@@ -33,8 +33,8 @@ function getItemByID(id)
 
 new FoodItem("Black Lentil", 5, "/images/blacklentil.png", 10)
 new FoodItem("Red Lentil", 10, "/images/redlentil.png", 15)
-new FoodItem("Green Lentil", 10, "/images/greenlentil.png", 20)
-new FoodItem("Chicken", 10, "/images/chicken.png", 30)
+new FoodItem("Green Lentil", 30, "/images/greenlentil.png", 20)
+new FoodItem("Chicken Toy", 100, "/images/chicken.png", 30)
 
 module.exports = {
     ItemList,

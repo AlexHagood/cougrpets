@@ -34,6 +34,7 @@ async function getPetHappiness(user) {
 }
 
 async function addPetHappiness(username, hungerValue) {
+    console.log("adding happiness");
     profile = await Profile.findByPk(username)
     if (profile.happiness < 100) {
         profile.happiness += 30
