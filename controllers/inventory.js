@@ -28,6 +28,8 @@ async function eatItem(req, res){
     const itemID = req.body.itemID;
     const saturation = Item.getItemByID(itemID).saturation
     const username = req.session.user.username
+    console.log("ITEM ID: !!", itemID, "Saturation:", saturation);
+    if (itemID == 3) {Pet.removePetHappiness(username, 20)} else {Pet.addPetHappiness(username, 10)}
     Inventory.popItem(username, itemID)
     Pet.addPetFullness(username, saturation)
     res.send("Yum!")
