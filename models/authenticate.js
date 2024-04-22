@@ -54,21 +54,16 @@ async function authenticateUser(username, password)
 
 async function changePassword(user, newpassword) 
 {
-    //SIERRA PUT YOUR DB CODE HERE
-    //console.log("Password changing: " + user + " " + newpassword)
-    user.password = newpassword;
+
+    profile = await User.findByPk(user)
+    profile.password = newpassword;
+    await profile.save()
 }
 
-async function changeUsername(user, newusername) 
-{
-    //SIERRA PUT YOUR DB CODE HERE
-    user.username = newusername;
-}
 
 module.exports = {
     registerUser,
     checkUser,
     authenticateUser,
-    changePassword,
-    changeUsername
+    changePassword
 }

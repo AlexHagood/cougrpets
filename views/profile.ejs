@@ -6,16 +6,6 @@
    <!-- <p>Stats:</p>
    <p>Money:</p> -->
    <br>
-   <h2>Want to change your username?</h2>
-   <form method="post">
-      <label for="username">New Username: </label>
-      <input type="text" id="newusername" name="username">
-      <label for="password2">Certify New Username: </label>
-      <input type="text" id="newusername2" name="username">
-      <br>
-      <input type="submit" value="Change Username" onClick="changeUsername()">
-   </form>
-   <br>
    <h2>Want to change your password?</h2>
    <form method="post">
       <label for="password">New Password: </label>
@@ -39,7 +29,7 @@
       data = {
          newpassword: newpassword
       }
-      fetch('/password', {
+      fetch('/profile/password', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json'
@@ -65,33 +55,4 @@
 
    }
 
-   function changeUsername() {
-      newuser = document.getElementById("newusername").value;
-      data = {
-         newuser : newuser
-      }
-      fetch('/username', {
-         method: 'POST',
-         headers: {
-            'Content-Type': 'application/json'
-         }
-         ,
-         body: JSON.stringify(data)
-      })
-         .then(Response => {
-            console.log(Response.status)
-            if (Response.status == 200) {
-               window.location.href = Response.url;
-               return "success";
-            }
-            else return Response.text();
-         })
-         .then(data => {
-            notify(data)
-         })
-         .catch(error => {
-            notify("Unknown server error, try again later.")
-            console.log(error)
-         })
-   }
 </script>
