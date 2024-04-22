@@ -1,15 +1,3 @@
-The server now can interact with the shop and inventory pages. The user can buy items and they will show up in the inventory, and can eat them and have them dissapear!
+use the command "npm install" then "node server.js" to run the program
 
-Database needs functionality for
-Tracking usernames/passwords, storing user items as a itemID and a quanitity, pet information (hunger, name, happiness). 
-All DB logic should be implemented in models, there are functions defined for functionality that will be / is useful, some of them have temp functioanlity.
-
-These pages need server integration
-Lentil Counter, Banner, Profile, Tictactoe
-
-These pages are could be considered done except for aesthetics + future content
-Game selection
-
-at some point there will be an mspaint cougar for the icon, i will use smthing off the internet for now
-
-all the basic colors and such are in the style.css file
+The user must create an account in the registration page to login. The registration page is linked to the login page. The user can buy items from the shop and they will show up in the inventory, and can eat them and have them dissapear! To earn happiness and money, the user must play games from the game selection page. We have two games to choose from: TicTacToe and LentilCount. To raise the fullness of your pet cougar, you must eat the foot in your inventory. 
