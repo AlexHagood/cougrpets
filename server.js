@@ -54,6 +54,8 @@ const petStatusRoutes = require("./routes/petStatusRoutes.js");
 const { sideBarData } = require("./controllers/petStatus.js");
 const { error } = require("console");
 const buyMoneyRoutes = require("./routes/buyMoney.js");
+const gameRoutes = require("./routes/gameRouter.js");
+
 
 
 app.use("/profile", profileRoutes);
@@ -63,6 +65,7 @@ app.use("/shop", shopRoutes);
 app.use("/", sideBarData);
 app.use(petStatusRoutes);
 app.use("/purchasemoney", buyMoneyRoutes);
+app.use("/games", gameRoutes);
 
 
 app.get("/", (req, res) => {
@@ -119,8 +122,13 @@ app.listen(3000, () => {
 
 // DB Initialization!
 async function setup() {
+  try{
   const user1 = await User.create({ username: "admin", password: "admin" });
   const profile1 = await Profile.create({ username: "admin", petname: "Butch", money: 100, food: 50, happiness: 50 });
+  }
+  catch {
+    console.log("Admin account creation failed, likely already exists. Nothing to worry about. ")
+  }
 }
 
 sequelize.sync({ }).then(() => {
